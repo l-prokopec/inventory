@@ -1,3 +1,10 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -7,4 +14,50 @@ body {
 
 h1 {
     color: #0066cc;
+}
+
+input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 4px rgba(0, 122, 204, 0.2);
+}
+
+::placeholder {
+  color: #999;
+}
+
+.button {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007acc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: #005fa3;
+}
+
+.button:active {
+  transform: scale(0.98);
 }

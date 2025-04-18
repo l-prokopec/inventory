@@ -1,11 +1,14 @@
 // 1. Načtení Expressu
 const express = require('express');
+const cors = require('cors');
 
 // 2. Vytvoření aplikace
 const app = express();
 
 // 3. Port, na kterém bude server běžet
 const port = 3001;
+
+app.use(cors());
 
 // 4. Middleware pro práci s JSONem v těle požadavku
 app.use(express.json());
@@ -15,6 +18,7 @@ const correctPassword = 'chaticka';
 
 app.post('/login', (req, res) => {
   const { password } = req.body;
+  console.log('Přijaté heslo:', password);  // Zkontroluj, co přijímáš
 
   if (password === correctPassword) {
     res.status(200).json({ success: true, message: 'Přihlášení úspěšné' });

@@ -1,24 +1,28 @@
-// 1. Načtení Expressu
+// Load express
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+const inventoryRoutes = require(path.resolve(__dirname, 'API', 'inventoryRoutes'));
 
-// 2. Vytvoření aplikace
+// Create app
 const app = express();
 
-// 3. Port, na kterém bude server běžet
 const port = 3001;
 
 app.use(cors());
 
-// 4. Middleware pro práci s JSONem v těle požadavku
+// Middleware for work with JSON in the request body
 app.use(express.json());
 
-// Simulace "správného" hesla
+// Add inventory router
+app.use('/api', inventoryRoutes);
+
+// Correct password
 const correctPassword = 'chaticka';
 
 app.post('/login', (req, res) => {
   const { password } = req.body;
-  console.log('Přijaté heslo:', password);  // Zkontroluj, co přijímáš
+  console.log('Přijaté heslo:', password);
 
   if (password === correctPassword) {
     res.status(200).json({ success: true, message: 'Přihlášení úspěšné' });
@@ -28,12 +32,12 @@ app.post('/login', (req, res) => {
 });
 
 
-// 5. Testovací endpoint – základní kontrola, že server funguje
+// Server test
 app.get('/', (req, res) => {
   res.send('Backend je v provozu!');
 });
 
-// 6. Spuštění serveru
+// Server start
 app.listen(port, () => {
   console.log(`Server běží na http://localhost:${port}`);
 });

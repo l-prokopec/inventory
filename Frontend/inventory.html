@@ -10,17 +10,19 @@
 <body>
     <h1>Co máme v mrazáku</h1>
 
-    <button id="toggle-form-button" class="button">➕ Přidat klobásu</button>
+    <div >
+        <button id="toggle-form-button" class="button">➕ Přidat klobásu</button>
 
-    <!-- Display add form-->
-    <form id="add-sausage-form" class="form-wrapper" style="display: none;">
-        <input type="text" id="name-input" placeholder="Název klobásy" required />
-        <input type="number" id="count-input" placeholder="Počet" min="1" required />
-        <button type="submit" class="button">Uložit klobásu</button>
-    </form>
+        <!-- Display add form-->
+        <form id="add-sausage-form" class="form-wrapper" style="display: none;">
+            <input type="text" id="name-input" placeholder="Název klobásy" required />
+            <input type="number" id="count-input" placeholder="Počet" min="1" required />
+            <button type="submit" class="button">Uložit klobásu</button>
+        </form>
+    </div>
 
     <!-- Place for displaying sausages dynamically -->
-    <div id="sausages-list"></div>
+    <div id="sausages-list" class="sausage-list-container"></div>
 
     <script src="inventory.js"></script>
 

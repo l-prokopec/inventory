@@ -54,10 +54,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         sausageItem.id = `sausage-${sausage.id}`;
 
         sausageItem.innerHTML = `
-        <span class="sausage-name">${sausage.name}</span>
-        <span class="sausage-quantity">${sausage.count}</span>
-        <button class="increase">+</button>
-        <button class="decrease">-</button>
+        <div class="sausage-item-container">
+            <span class="sausage-name">${sausage.name}</span>
+            <div class="sausage-controls">
+                <button class="decrease">-</button>
+                <span class="sausage-quantity">${sausage.count}</span>
+                <button class="increase">+</button>
+            </div>
+        </div>
         `;
 
         sausageList.appendChild(sausageItem);

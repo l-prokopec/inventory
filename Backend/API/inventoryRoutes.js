@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db'); // Import database connection
 
 router.get('/sausages', (req, res) => {
-    db.all('SELECT * FROM sausages WHERE count > 0', [], (err, rows) => {
+    db.all('SELECT * FROM sausages WHERE count >= 0', [], (err, rows) => {
         if (err) {
             res.status(500).json({ message: 'Error while loading sausages' });
         } else {
@@ -16,7 +16,7 @@ router.get('/sausages', (req, res) => {
 router.post('/sausages', (req, res) => {
     const { name, count } = req.body;
 
-    // Vložení nové klobásy do databáze
+    // Add new sausage to the database
     db.run('INSERT INTO sausages (name, count) VALUES (?, ?)', [name, count], function (err) {
         if (err) {
             res.status(500).json({ message: 'Error adding sausage' });
@@ -32,7 +32,7 @@ router.post('/sausages', (req, res) => {
 });
 
 // API endpoint for sausage count update 
-router.post('/sausages/:id', (req, res) => {
+router.patch('/sausages/:id', (req, res) => {
     const id = req.params.id;
     const { countChange } = req.body; // Sending +1 or -1
 

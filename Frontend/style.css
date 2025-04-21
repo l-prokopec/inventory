@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
   width: 100%;
 }
 
@@ -30,22 +29,26 @@
 }
 
 .sausage-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
   align-items: center;
 }
 
 .sausage-quantity {
-  font-size: 1.1rem;
   width: 40px;
-  font-weight: bold;
   text-align: center;
-  color: #666;
 }
 
+.sausage-name,
+.sausage-controls,
+.increase,
+.decrease {
+  font-size: 1.0rem;
+  font-weight: 600;
+  color: #333;
+}
+
+
 button {
-  background-color: #007acc;
+  background-color: #3b9ad9;
   color: white;
   border: none;
   border-radius: 6px;
@@ -55,7 +58,7 @@ button {
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: #1b85cc;
 }
 
 button:active {

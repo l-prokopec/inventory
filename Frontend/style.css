@@ -33,14 +33,24 @@
 }
 
 .sausage-quantity {
-  width: 40px;
+  width: 25px;
   text-align: center;
+}
+
+.delete {
+  background-color: #ff3535;
+  margin-left: 10px;
+}
+
+.delete:hover {
+  background-color: #d01a1a;
 }
 
 .sausage-name,
 .sausage-controls,
 .increase,
-.decrease {
+.decrease,
+.delete {
   font-size: 1.0rem;
   font-weight: 600;
   color: #333;

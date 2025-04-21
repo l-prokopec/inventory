@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <button class="decrease">-</button>
                 <span class="sausage-quantity">${sausage.count}</span>
                 <button class="increase">+</button>
+                <button class="delete">Delete</button> 
             </div>
         </div>
         `;

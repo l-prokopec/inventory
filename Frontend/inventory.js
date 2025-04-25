@@ -60,10 +60,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <button class="decrease">-</button>
                 <span class="sausage-quantity">${sausage.count}</span>
                 <button class="increase">+</button>
-                <button class="delete">Delete</button> 
+                <button class="delete">Odstranit</button> 
             </div>
         </div>
         `;
+
+        // Hide the decrease button when sausage quantity = 0
+        const decrease = sausageItem.querySelector(".decrease");
+        if (sausage.count <= 0) {
+            decrease.style.display = "none";
+        }
 
         sausageList.appendChild(sausageItem);
 

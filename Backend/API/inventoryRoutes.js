@@ -48,4 +48,20 @@ router.patch('/sausages/:id', (req, res) => {
     });
 });
 
+// API endpoint for sausage delete 
+router.delete('/sausages/:id', (req, res) => {
+    const id = req.params.id;
+    
+    // Update sausage count
+    db.run('DELETE FROM sausages WHERE id = ?', [id], function (err) {
+        if (err) {
+            res.status(500).json({ message: 'Error deleting sausage count' });
+        } else if (this.changes === 0) {
+            res.status(404).json({ message: 'Sausage not found.' });
+        } else {
+            res.json({ message: 'Sausage delete successfull.' });
+        }
+    });
+});
+
 module.exports = router;

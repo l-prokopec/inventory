@@ -73,9 +73,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         sausageList.appendChild(sausageItem);
 
-        // Click on + or -
+        // Click on + or - or delete
         sausageItem.querySelector('.increase').addEventListener('click', () => updateQuantity(sausage.id, 1));
         sausageItem.querySelector('.decrease').addEventListener('click', () => updateQuantity(sausage.id, -1));
+        sausageItem.querySelector('.delete').addEventListener('click', () => deleteSausage(sausage.id));
     });
 
     // Update sausage count function
@@ -91,5 +92,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Update sausage count on the page
         const sausageElement = document.querySelector(`#sausage-${updatedSausage.id}`);
         sausageElement.querySelector('.sausage-quantity').textContent = updatedSausage.quantity;
+    }
+
+    // Delete sausage function
+    async function deleteSausage(id) {
+        const response = await fetch(`http://localhost:3001/api/sausages/${id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        });
     }
 });

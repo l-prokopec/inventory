@@ -2,12 +2,11 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open('v1').then(cache => {
       return cache.addAll([
-        './inventory.html',
-        './inventory.js',
-        './style.css',
-        './manifest.json',
-        './icons/klobas.png',
-        './icons/klobas.png'
+        'inventory.html',
+        'inventory.js',
+        'style.css',
+        'manifest.json',
+        'icons/klobas.png'
       ]);
     })
   );

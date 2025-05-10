@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventář</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/klobas.png">
+
+
+</head>
+<body>
+    <h1>Mrazák</h1>
+
+    <div >
+        <button id="toggle-form-button" class="button">➕ Přidat klobásu</button>
+
+        <!-- Display add form-->
+        <form id="add-sausage-form" class="form-wrapper" style="display: none;">
+            <input type="text" id="name-input" placeholder="Název klobásy" required />
+            <input type="number" id="count-input" placeholder="Počet" min="1" required />
+            <button type="submit" class="button">Uložit klobásu</button>
+        </form>
+    </div>
+
+    <!-- Place for displaying sausages dynamically -->
+    <div id="sausages-list" class="sausage-list-container"></div>
+
+    <script src="inventory.js"></script>
+
+</body>
+</html>

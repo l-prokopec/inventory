@@ -1,0 +1,20 @@
+{
+  "name": "Klobásovník",
+  "short_name": "Klobásovník",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#990000",
+  "icons": [
+    {
+      "src": "icons/klobas.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/klobas.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

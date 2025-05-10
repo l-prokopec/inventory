@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sausageList = document.getElementById('sausages-list');
 
     // Load sausages from backend
-    const response = await fetch('http://localhost:3001/api/sausages');
-    const sausages = await response.json();
+    const sausagesJSON = localStorage.getItem('sausages');
+    const sausages = sausagesJSON ? JSON.parse(sausagesJSON) : [];
 
     console.log(sausages);
 
@@ -21,18 +21,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
     
-        const response = await fetch('http://localhost:3001/api/sausages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, count })
-        });
-    
-        if (response.ok) {
-            const newSausage = await response.json();
-            location.reload(); // Nejjednodušší způsob jak znovu načíst seznam
-        } else {
-            alert('Nepodařilo se přidat klobásu.');
-        }
+        // Load sausages
+        const sausages = JSON.parse(localStorage.getItem('sausages')) || [];
+
+        const newSausage = {
+            id: Date.now(), // jednoduché ID
+            name,
+            count
+        };
+
+        sausages.push(newSausage);
+        localStorage.setItem('sausages', JSON.stringify(sausages));
+
+        location.reload();
     });
 
 
@@ -80,25 +81,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     // Update sausage count function
-    async function updateQuantity(id, change) {
-        const response = await fetch(`http://localhost:3001/api/sausages/${id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ countChange: change }) 
+    function updateQuantity(id, change) {
+        let sausages = JSON.parse(localStorage.getItem('sausages')) || [];
+
+        sausages = sausages.map(s => {
+            if (s.id === id) {
+                s.count += change;
+                if (s.count < 0) s.count = 0;
+            }
+            return s;
         });
 
-        const updatedSausage = await response.json();
-
-        // Update sausage count on the page
-        const sausageElement = document.querySelector(`#sausage-${updatedSausage.id}`);
-        sausageElement.querySelector('.sausage-quantity').textContent = updatedSausage.quantity;
+        localStorage.setItem('sausages', JSON.stringify(sausages));
+        location.reload();
     }
 
     // Delete sausage function
-    async function deleteSausage(id) {
-        const response = await fetch(`http://localhost:3001/api/sausages/${id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
-        });
+    function deleteSausage(id) {
+        let sausages = JSON.parse(localStorage.getItem('sausages')) || [];
+
+        sausages = sausages.filter(s => s.id !== id);
+
+        localStorage.setItem('sausages', JSON.stringify(sausages));
+        location.reload();
     }
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => console.log('Service Worker zaregistrován:', reg))
+    .catch(err => console.error('Chyba SW:', err));
+}

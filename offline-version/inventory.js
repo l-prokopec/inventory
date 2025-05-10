@@ -106,3 +106,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         location.reload();
     }
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(reg => console.log('Service Worker zaregistrován:', reg))
+    .catch(err => console.error('Chyba SW:', err));
+}

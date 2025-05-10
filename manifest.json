@@ -1,7 +1,7 @@
 {
   "name": "Klobásovník",
   "short_name": "Klobásovník",
-  "start_url": "inventory.html",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#990000",
